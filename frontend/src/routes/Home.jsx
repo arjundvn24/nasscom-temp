@@ -2,14 +2,32 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BounceLoader } from "react-spinners";
 import Container from "../components/Container";
+import { DateRangePicker } from "react-date-range";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import { startOfMonth, endOfMonth, addMonths, format } from 'date-fns';
 // import axios from "axios";
 
 const Home = () => {
   const [dropdown1Value, setDropdown1Value] = useState('');
   const [dropdown2Value, setDropdown2Value] = useState('');
-  const [dropdown3Value, setDropdown3Value] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [startDate, setStartDate] = useState(startOfMonth(new Date()));
+  const [endDate, setEndDate] = useState(endOfMonth(addMonths(new Date(), 1)));
+  
+  const handleStartDateChange = (event) => {
+    const date = new Date(event.target.value);
+    setStartDate(startOfMonth(date));
+    setEndDate(endOfMonth(addMonths(date, 1)));
+  };
+
+  const handleEndDateChange = (event) => {
+    const date = new Date(event.target.value);
+    setEndDate(endOfMonth(date));
+  };
+  
+  
 
   const navigate = useNavigate();
 
@@ -23,7 +41,8 @@ const Home = () => {
       body: JSON.stringify({
         dropdown1Value: dropdown1Value,
         dropdown2Value: dropdown2Value,
-        dropdown3Value: dropdown3Value
+        startDate:startDate,
+        endDate:endDate,
       })
     })
 
@@ -68,24 +87,23 @@ const Home = () => {
             <option value="khamman">Khammam</option>
             <option value="karimnagar">Karimnagar</option>
             </select>
-            <label>Enter the month: </label>
-            <select value={dropdown2Value} onChange={e => setDropdown2Value(e.target.value)}>
-            <option value="">Select a month</option>
-             <option value="jan">January</option>
-             <option value="feb">Februrary</option>
-             <option value="mar">March</option>
-             <option value="apr">April</option>
-             <option value="may">May</option>
-             <option value="jun">June</option>
-             <option value="jul">July</option>
-             <option value="aug">August</option>
-             <option value="sep">September</option>
-             <option value="oct">October</option>
-             <option value="nov">November</option>
-             <option value="dec">December</option>
-            </select>
+      <label htmlFor="startMonth">Start Month:</label>
+      <input
+        id="startMonth"
+        type="month"
+        value={format(startDate, 'yyyy-MM')}
+        onChange={handleStartDateChange}
+      />
+      <label htmlFor="endMonth">End Month:</label>
+      <input
+        id="endMonth"
+        type="month"
+        value={format(endDate, 'yyyy-MM')}
+        onChange={handleEndDateChange}
+        min={format(startDate, 'yyyy-MM')}
+      />
             <label>Enter the Model: </label>
-            <select value={dropdown3Value} onChange={e => setDropdown3Value(e.target.value)}>
+            <select value={dropdown2Value} onChange={e => setDropdown2Value(e.target.value)}>
             <option value="">Select a model</option>
              <option value="model1">MODEL 1</option>
              <option value="model2">MODEL 2</option>

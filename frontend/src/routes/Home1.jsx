@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BounceLoader } from "react-spinners";
 import Container from "../components/Container";
+import { DateRangePicker } from "react-date-range";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
 // import axios from "axios";
 
 const Home = () => {
@@ -9,6 +12,18 @@ const Home = () => {
   const [dropdown2Value, setDropdown2Value] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const MonthRangeForm = () => {
+    const [startMonth, setStartMonth] = useState('');
+    const [endMonth, setEndMonth] = useState('');
+  
+    const handleStartMonthChange = (event) => {
+      setStartMonth(event.target.value);
+    }
+  
+    const handleEndMonthChange = (event) => {
+      setEndMonth(event.target.value);
+    }
+  };
 
   const navigate = useNavigate();
 
@@ -21,7 +36,8 @@ const Home = () => {
       },
       body: JSON.stringify({
         dropdown1Value: dropdown1Value,
-        dropdown2Value: dropdown2Value
+        dropdown2Value: dropdown2Value,
+        dateRange:dateRange,
       })
     })
 
@@ -37,7 +53,7 @@ const Home = () => {
           <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-300">
           SWAस्थम
           </h1>
-          <h1 className="text-lg">Heat Wave and Temperature Predictor</h1>
+          <h1 className="text-lg">Air Quality Index Predictor</h1>
         </div>
         {loading && (
           <div className="absolute top-0 left-0 w-full h-full">
@@ -66,23 +82,42 @@ const Home = () => {
             <option value="khamman">Khammam</option>
             <option value="karimnagar">Karimnagar</option>
             </select>
-            <label>Enter the month: </label>
-            <select value={dropdown2Value} onChange={e => setDropdown2Value(e.target.value)}>
-            <option value="">Select a month</option>
-             <option value="jan">January</option>
-             <option value="feb">Februrary</option>
-             <option value="mar">March</option>
-             <option value="apr">April</option>
-             <option value="may">May</option>
-             <option value="jun">June</option>
-             <option value="jul">July</option>
-             <option value="aug">August</option>
-             <option value="sep">September</option>
-             <option value="oct">October</option>
-             <option value="nov">November</option>
-             <option value="dec">December</option>
-            </select>
-
+            <label>
+        Start Month:
+        <select value={startMonth} onChange={handleStartMonthChange}>
+          <option value="">Select a month</option>
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+      </label>
+      <label>
+        End Month:
+        <select value={endMonth} onChange={handleEndMonthChange}>
+          <option value="">Select a month</option>
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+      </label>
             <label>Enter the Model: </label>
             <select value={dropdown2Value} onChange={e => setDropdown2Value(e.target.value)}>
             <option value="">Select a model</option>
@@ -107,3 +142,4 @@ const Home = () => {
 };
 
 export default Home;
+
