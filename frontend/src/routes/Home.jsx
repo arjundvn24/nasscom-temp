@@ -50,7 +50,7 @@ const Home = () => {
     // setLoading(false);
     navigate(`/result`, { state: { dropdown1Value, dropdown2Value } });
   };
-
+  //f
   return (
     <div>
       <main className="max-w-xl mx-auto my-16">
