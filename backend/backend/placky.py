@@ -34,7 +34,7 @@ def similarity():
     #     data = request.get_json()
     #     print(data)
     #     output_file.write(str(data))
-     return jsonify(similarity=1,image_gen=1)
+     return 
      return "done"
 
     
@@ -42,10 +42,14 @@ def similarity():
 
 
 
-# @bp.route('/uploads/<filename>')
-# def download_models(filename):
-#     return send_from_directory("../uploads", filename, as_attachment=True)
+@bp.route('/uploads/<filename>')
+def download_models(filename):
+    return send_from_directory("../uploads", filename, as_attachment=True)
 
+
+# @bp.route('/adilabad/aqi/<filename>')
+# def download_models(filename):
+#     return send_from_directory("", filename, as_attachment=True)
 # @bp.route('/results/<filename>')
 # def download_images(filename):
 #     return send_from_directory("../results", filename, as_attachment=True)
