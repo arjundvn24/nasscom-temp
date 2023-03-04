@@ -6,7 +6,7 @@ import kartik from "../img/Kartik.png"
 import arjun from "../img/Arjun.png"
 import "../../src/index.css"
 import arc from "../img/arc.png"
-
+<script src="https://kit.fontawesome.com/b972bf4b3e.js" crossorigin="anonymous"></script>
 const Working = () => {
   return (
     <div data-aos="fade-left">
@@ -25,6 +25,14 @@ const Working = () => {
                 />
                 <h4 id="name">Rudransh Bansal</h4>
                 <p> NLP Expert /ML DEV</p>
+                <div className="social-icons">
+                  <a href="https://www.linkedin.com/in/rudransh-bansal/" target="_blank">
+                  <i className="fab fa-linkedin"></i>
+                  </a>
+                   <a href="https://github.com/rudranshbansal" target="_blank">
+                      <i className="fab fa-github"></i>
+                      </a>
+                    </div>
               </div>
 
               <div className="about-card">
@@ -59,8 +67,6 @@ const Working = () => {
             </div>
           </div>
         </div>
-      </Container>
-      <Container>
       <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-red-300">
           OUR PROJECT
           </h3>

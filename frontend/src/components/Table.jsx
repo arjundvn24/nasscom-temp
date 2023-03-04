@@ -6,7 +6,7 @@ const Table = () => {
   const [data, setData] = useState(sampleData);
 
   return (
-    <table className="table-auto border-collapse border border-black-600 mx-auto" style={{ width: '80%', height: '400px' }}>
+    <table className="table-auto border-collapse border border-black-600 mx-auto" style={{ width: '100%', height: '4em' }}>
       <thead>
         <tr className="bg-white-200">
           <th className="border border-black-500 px-4 py-2">Date</th>
