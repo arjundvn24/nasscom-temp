@@ -1,15 +1,19 @@
 import Container from "../components/Container";
 import React from 'react';
+import rudransh from "../../images/Rudransh.PNG"
+import kartik from "../../images/Kartik.png"
+import chayan from "../../images/Chayan.PNG"
+import arjun from "../../images/Arjun.png"
 const developers = [
   {
     name: 'Rudransh Bansal',
-    image: 'path/to/image1.png',
+    image: {rudransh},
     bio: 'ML Developer',
     skills: 'Skills of developer 1'
   },
   {
     name: 'Kartik Srivastava',
-    image: 'path/to/image2.png',
+    image: {chayan},
     bio: 'ML Developer',
     skills: 'Skills of developer 2'
   },
