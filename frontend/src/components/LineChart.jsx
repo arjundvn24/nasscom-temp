@@ -41,8 +41,8 @@ const LineChart1 = () => {
   ]);
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center',height:'50vh',marginLeft:'2em'}}>
-      <LineChart width={600} height={300} data={chartData}>
+    <div style={{ display: 'flex', alignItems: 'center',width:'200vh',height:'50vh',marginLeft:'2em'}}>
+      <LineChart width={800} height={300} data={chartData}>
         <CartesianGrid strokeDasharray="4 4" />
         <XAxis dataKey="date" />
         <YAxis />

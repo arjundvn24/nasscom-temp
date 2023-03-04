@@ -35,7 +35,7 @@ const Histogram = () => {
       data={AQI_HISTOGRAM_DATA}
       layout={AQI_HISTOGRAM_LAYOUT}
       style={{ width: '100%', height: '100%' }}
-    />
+      />
   );
 };
 
