@@ -30,10 +30,10 @@ def similarity():
     #     return jsonify(error="Obj file not provided")
     # os.system("blender -b -P uploads/script.py")
     # result,image_gen = ml.delay().get()
-     with open('/Users/chayansinha/Desktop/nasscom-main/MLBasic/output.txt','w') as output_file:
-        data = request.get_json()
-        print(data)
-        output_file.write(str(data))
+    #  with open('/Users/chayansinha/Desktop/nasscom-main/MLBasic/output.txt','w') as output_file:
+    #     data = request.get_json()
+    #     print(data)
+    #     output_file.write(str(data))
      return jsonify(similarity=1,image_gen=1)
      return "done"
 

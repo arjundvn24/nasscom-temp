@@ -1,10 +1,20 @@
 import { useLocation } from "react-router-dom";
 import Container from "../components/Container";
 import Scene from "../components/Model";
+import LineChart1 from "../components/LineChart";
+// import Slider from "../components/MonthPicker";
 import output from "../../../MLBasic/output.png"
 const Result = () => {
   const { state: { similarity,image_gen } } = useLocation()
-
+  const otherData = [
+    { date: '2022-01-01', aqi: 22.0 },
+    { date: '2022-01-02', aqi: 16.5 },
+    { date: '2022-01-03', aqi: 21.2 },
+    { date: '2022-01-04', aqi: 33.1 },
+    { date: '2022-01-05', aqi: 29.8 },
+    { date: '2022-01-06', aqi: 15.2 },
+    { date: '2022-01-07', aqi: 40.7 },
+  ];
   return (
     <div className="my-20">
       <main className="max-w-3xl mx-auto">
@@ -29,6 +39,9 @@ const Result = () => {
             <img src={output}
             width="auto"></img>
           </div>
+          <LineChart1 />
+          {/* <MonthPicker /> */}
+
         </Container>
         {/* <div className="flex mt-10 gap-1 justify-center">
           <div className="text-center">
