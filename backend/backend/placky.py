@@ -34,7 +34,8 @@ def similarity():
     #     data = request.get_json()
     #     print(data)
     #     output_file.write(str(data))
-     return 
+     data = request.get_json()
+     print(data)
      return "done"
 
     
