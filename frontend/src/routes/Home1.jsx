@@ -5,6 +5,7 @@ import Container from "../components/Container";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
+import { startOfMonth, endOfMonth, addMonths, format } from 'date-fns';
 // import axios from "axios";
 
 const Home = () => {
@@ -12,18 +13,21 @@ const Home = () => {
   const [dropdown2Value, setDropdown2Value] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const MonthRangeForm = () => {
-    const [startMonth, setStartMonth] = useState('');
-    const [endMonth, setEndMonth] = useState('');
+  const [startDate, setStartDate] = useState(startOfMonth(new Date()));
+  const [endDate, setEndDate] = useState(endOfMonth(addMonths(new Date(), 1)));
   
-    const handleStartMonthChange = (event) => {
-      setStartMonth(event.target.value);
-    }
-  
-    const handleEndMonthChange = (event) => {
-      setEndMonth(event.target.value);
-    }
+  const handleStartDateChange = (event) => {
+    const date = new Date(event.target.value);
+    setStartDate(startOfMonth(date));
+    setEndDate(endOfMonth(addMonths(date, 1)));
   };
+
+  const handleEndDateChange = (event) => {
+    const date = new Date(event.target.value);
+    setEndDate(endOfMonth(date));
+  };
+  
+  
 
   const navigate = useNavigate();
 
@@ -37,7 +41,8 @@ const Home = () => {
       body: JSON.stringify({
         dropdown1Value: dropdown1Value,
         dropdown2Value: dropdown2Value,
-        dateRange:dateRange,
+        startDate:startDate,
+        endDate:endDate,
       })
     })
 
@@ -53,7 +58,7 @@ const Home = () => {
           <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-300">
           SWAस्थम
           </h1>
-          <h1 className="text-lg">Air Quality Index Predictor</h1>
+          <h1 className="text-lg">Heat Wave Predictor</h1>
         </div>
         {loading && (
           <div className="absolute top-0 left-0 w-full h-full">
@@ -82,50 +87,21 @@ const Home = () => {
             <option value="khamman">Khammam</option>
             <option value="karimnagar">Karimnagar</option>
             </select>
-            <label>
-        Start Month:
-        <select value={startMonth} onChange={handleStartMonthChange}>
-          <option value="">Select a month</option>
-          <option value="January">January</option>
-          <option value="February">February</option>
-          <option value="March">March</option>
-          <option value="April">April</option>
-          <option value="May">May</option>
-          <option value="June">June</option>
-          <option value="July">July</option>
-          <option value="August">August</option>
-          <option value="September">September</option>
-          <option value="October">October</option>
-          <option value="November">November</option>
-          <option value="December">December</option>
-        </select>
-      </label>
-      <label>
-        End Month:
-        <select value={endMonth} onChange={handleEndMonthChange}>
-          <option value="">Select a month</option>
-          <option value="January">January</option>
-          <option value="February">February</option>
-          <option value="March">March</option>
-          <option value="April">April</option>
-          <option value="May">May</option>
-          <option value="June">June</option>
-          <option value="July">July</option>
-          <option value="August">August</option>
-          <option value="September">September</option>
-          <option value="October">October</option>
-          <option value="November">November</option>
-          <option value="December">December</option>
-        </select>
-      </label>
-            <label>Enter the Model: </label>
-            <select value={dropdown2Value} onChange={e => setDropdown2Value(e.target.value)}>
-            <option value="">Select a model</option>
-             <option value="model1">MODEL 1</option>
-             <option value="model2">MODEL 2</option>
-             <option value="model3">MODEL 3</option>
-             <option value="model4">MODEL 4</option>
-            </select>
+      <label htmlFor="startMonth">Start Month:</label>
+      <input
+        id="startMonth"
+        type="month"
+        value={format(startDate, 'yyyy-MM')}
+        onChange={handleStartDateChange}
+      />
+      <label htmlFor="endMonth">End Month:</label>
+      <input
+        id="endMonth"
+        type="month"
+        value={format(endDate, 'yyyy-MM')}
+        onChange={handleEndDateChange}
+        min={format(startDate, 'yyyy-MM')}
+      />
             <button
               type="submit"
               className="col-span-2 bg-blue-600 text-white rounded-md p-3
@@ -142,4 +118,3 @@ const Home = () => {
 };
 
 export default Home;
-

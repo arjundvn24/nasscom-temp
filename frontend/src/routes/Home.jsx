@@ -102,14 +102,6 @@ const Home = () => {
         onChange={handleEndDateChange}
         min={format(startDate, 'yyyy-MM')}
       />
-            <label>Enter the Model: </label>
-            <select value={dropdown2Value} onChange={e => setDropdown2Value(e.target.value)}>
-            <option value="">Select a model</option>
-             <option value="model1">MODEL 1</option>
-             <option value="model2">MODEL 2</option>
-             <option value="model3">MODEL 3</option>
-             <option value="model4">MODEL 4</option>
-            </select>
             <button
               type="submit"
               className="col-span-2 bg-blue-600 text-white rounded-md p-3
