@@ -1,0 +1,17 @@
+@import url('https://fonts.cdnfonts.com/css/satoshi');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+body {
+    background-image: url("https://www.breeze-technologies.de/wp-content/uploads/2019/06/holger-link-748973-unsplash.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}   
+
