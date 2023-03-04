@@ -1,8 +1,11 @@
 import React from 'react';
 
+
+
 const Block = ({ name, value }) => {
   const style = {
-    backgroundColor: value > 0 ? 'lightgreen' : 'lightred',
+    backgroundColor: value > 0 ? 'green' : 'red',
+    color:'white',
     width: '200px',
     height: '100px',
     margin: '10px',

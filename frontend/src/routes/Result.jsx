@@ -8,12 +8,13 @@ import Histogram from "../components/Histogram";
 // import Slider from "../components/MonthPicker";
 import Block from "../components/Block";
 import output from "../../../MLBasic/output.png"
+import "../index.css"
 const Result = () => {
   const { state: { similarity,image_gen } } = useLocation()
   return (
     <div className="my-20">
       <main className="max-w-3xl mx-auto">
-        <Container>
+      <Container className="my-container">
           <div className="text-center">
           <h1 className="text-green-500 text-2xl font-bold mb-5">
                 RESULTS:
@@ -29,16 +30,17 @@ const Result = () => {
             )} */}
             <p>
               {/* Both the models are <u>{similarity * 100}%</u> similar */}
-              <h4>AQI for :</h4>
             </p>
+            <b>AQI trends over the years</b>
+            <hr></hr>
             <img src={output}
             width="auto"></img>
           </div>
           <LineChart1 />
           <div className="flex flex-row">
-          <Block name="Block 1" value={10} float/>
-          <Block name="Block 2" value={1} />
-          <Block name="Block 2" value={1} />
+          <Block name="RMSE" value={10} float/>
+          <Block name="MAE" value={1} />
+          <Block name="MAPE" value={1} />
     </div>
     <Table/>
     <Histogram/>
