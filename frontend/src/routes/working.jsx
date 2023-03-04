@@ -1,57 +1,35 @@
 import Container from "../components/Container";
-import React from 'react';
-import rudransh from "../../images/Rudransh.PNG"
-import kartik from "../../images/Kartik.png"
-import chayan from "../../images/Chayan.PNG"
-import arjun from "../../images/Arjun.png"
-const developers = [
-  {
-    name: 'Rudransh Bansal',
-    image: {rudransh},
-    bio: 'ML Developer',
-    skills: 'Skills of developer 1'
-  },
-  {
-    name: 'Kartik Srivastava',
-    image: {chayan},
-    bio: 'ML Developer',
-    skills: 'Skills of developer 2'
-  },
-  {
-    name: 'Chayan Sinha',
-    image: 'path/to/image3.png',
-    bio: 'Frontend Developer',
-    skills: 'Skills of developer 3'
-  },
-  {
-    name: 'Developer 4',
-    image: 'path/to/image4.png',
-    bio: 'Bio of developer 4',
-    skills: 'Skills of developer 4'
-  }
-];
-
-
-
+import Axios from "axios";
+import rudransh from "../img/rudransh.png"
+import chayan from "../img/chayan.png"
+import kartik from "../img/manik.png"
+import arjun from "../img/Arjun.png"
 
 const Working = () => {
   return (
-    <main className="max-w-7xl mx-auto my-20">
-      <h1 className="text-center text-3xl font-bold">TEAM BITLOCK</h1>
-      <Container>
-      <h1>About Us</h1>
-      <div className="developer-container">
-        {developers.map((developer, index) => (
-          <div key={index} className="developer-card">
-            <img src={developer.image} alt={developer.name} className="developer-image" />
-            <h2>{developer.name}</h2>
-            <p>{developer.bio}</p>
-            <p>Skills: {developer.skills}</p>
-          </div>
-        ))}
-      </div>
-      </Container>
-    </main>
+            <div data-aos="fade-left">
+                  <Container fluid>
+                    <div className="total-about">
+                      <div className="about-heading">
+                        <h6 className="section-heading">Our Team</h6>
+                      </div>
+                      <div className="about-card">
+                        <div>
+                          <img id="dev"
+                            src={rudransh}
+                            style={{ width: "200px", height: "200px" }}
+                            alt=""
+                          />
+                          <h4 id="name">Rudransh Bansal</h4>
+                          <p>Expertise in:
+                              Data Analysis,
+                              Nature Language Processing</p>
+                        </div>
+                        </div>
+                        </div>
+                  
+                  </Container>
+                  </div>
   );
 };
 
